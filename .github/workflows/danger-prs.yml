@@ -4,7 +4,7 @@ on:
     types: [opened, reopened, synchronize, labeled, unlabeled]
 
 jobs:
-  danger_issue_label_check:
+  danger_check_pr_labels:
     name: "Check Labels"
     runs-on: ubuntu-latest
     steps:
