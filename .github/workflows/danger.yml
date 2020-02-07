@@ -2,11 +2,15 @@ name: Danger
 on:
   issues:
     types: [opened, labeled, unlabeled]
+
 jobs:
   danger_issue_label_check:
     name: "Check Labels"
     runs-on: ubuntu-latest
     steps:
-      - name: "Hello World"
-        run: echo 'Hello World 👋'
-
+      - name: Check Labels with DangerJS
+        uses: danger/danger-js@9.1.8
+        with:
+          args: "--dangerfile Automattic/peril-settings/org/issue/label.ts"
+        env:
+          GITHUB_TOKEN: ${{ secrets.MOKAGIO_BOT_GITHUB_TOKEN }}
