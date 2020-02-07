@@ -1,16 +1,18 @@
 name: Run Danger on PRs
 on:
   pull_request:
-    types: [opened, reopened, synchronize, labeled, unlabeled]
+    # Not sure whether we actually want to run on reopened, the code shouldn't
+    # have changed right?
+    types: [opened, reopened, synchronize]
 
 jobs:
-  danger_check_pr_labels:
-    name: "Check Labels"
+  danger_check_pr_ios_specific:
+    name: "iOS Sanity Checks"
     runs-on: ubuntu-latest
     steps:
-      - name: Check Labels with DangerJS
+      - name: Perform sanity checks for the iOS projects
         uses: danger/danger-js@9.1.8
         with:
-          args: "--dangerfile Automattic/peril-settings/org/pr/label.ts"
+          args: "--dangerfile Automattic/peril-settings/org/pr/ios-macos.ts"
         env:
           GITHUB_TOKEN: ${{ secrets.MOKAGIO_BOT_GITHUB_TOKEN }}
