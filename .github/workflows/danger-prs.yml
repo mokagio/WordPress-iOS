@@ -1,0 +1,16 @@
+name: Run Danger on PRs
+on:
+  pull_request:
+    types: [opened, reopened, synchronize, labeled, unlabeled]
+
+jobs:
+  danger_issue_label_check:
+    name: "Check Labels"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Labels with DangerJS
+        uses: danger/danger-js@9.1.8
+        with:
+          args: "--dangerfile Automattic/peril-settings/org/pr/label.ts"
+        env:
+          GITHUB_TOKEN: ${{ secrets.MOKAGIO_BOT_GITHUB_TOKEN }}
