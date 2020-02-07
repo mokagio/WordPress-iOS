@@ -24,6 +24,6 @@ jobs:
           yarn install  --frozen-lockfile
 
       - name: Perform sanity checks for the iOS projects
-        run: yarn danger ci --dangerfile Automattic/peril-settings/org/pr/ios-macos.ts
+        run: yarn danger ci
         env:
           GITHUB_TOKEN: ${{ secrets.MOKAGIO_BOT_GITHUB_TOKEN }}

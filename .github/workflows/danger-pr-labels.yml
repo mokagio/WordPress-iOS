@@ -22,6 +22,6 @@ jobs:
           yarn install  --frozen-lockfile
 
       - name: Check Labels with DangerJS
-        run: yarn danger ci --dangerfile Automattic/peril-settings/org/pr/ios-macos.ts
+        run: yarn danger ci --dangerfile dangerfile-labels.ts
         env:
           GITHUB_TOKEN: ${{ secrets.MOKAGIO_BOT_GITHUB_TOKEN }}
