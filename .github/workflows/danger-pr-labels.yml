@@ -8,9 +8,20 @@ jobs:
     name: "Check Labels"
     runs-on: ubuntu-latest
     steps:
-      - name: Check Labels with DangerJS
-        uses: danger/danger-js@9.1.8
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v1
         with:
-          args: "--dangerfile Automattic/peril-settings/org/pr/label.ts"
+          node-version: '10.x'
+
+      - name: Install Yarn
+        run: npm install -g yarn
+
+      - name: Install Danger JS with Yarn
+        run: |
+          yarn install  --frozen-lockfile
+
+      - name: Check Labels with DangerJS
+        run: yarn danger ci --dangerfile Automattic/peril-settings/org/pr/ios-macos.ts
         env:
           GITHUB_TOKEN: ${{ secrets.MOKAGIO_BOT_GITHUB_TOKEN }}
