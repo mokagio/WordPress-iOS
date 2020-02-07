@@ -1,4 +1,4 @@
-name: Danger
+name: Run Danger on Issues
 on:
   issues:
     types: [opened, labeled, unlabeled]
