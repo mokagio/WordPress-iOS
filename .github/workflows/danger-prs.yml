@@ -15,4 +15,4 @@ jobs:
         with:
           args: "--dangerfile Automattic/peril-settings/org/pr/ios-macos.ts"
         env:
-          GITHUB_TOKEN: ${{ secrets.MOKAGIO_BOT_GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
